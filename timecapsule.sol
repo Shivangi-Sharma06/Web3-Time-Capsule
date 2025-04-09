@@ -74,5 +74,6 @@ contract TimeCapsule
         require(current.isLocked==false, "Capsule Is Still Locked");
         return current.ipfsHash;
     }
+    
 
 }
