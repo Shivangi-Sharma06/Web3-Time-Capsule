@@ -1,1 +1,3 @@
 # Web3-Time-Capsule
+This is a time capsule I have made to learn the use of IPFS in WEB3 and implement a fun project based on the same.
+This is a time capsule you can send to your loved one's as a future message which could be opened whenever you want which could be maybe after 5 or even 10 years later and you know what the catch is?...that no one can access the same without the person you have authorised!! All thanks to the blockchain technology which made this possible.

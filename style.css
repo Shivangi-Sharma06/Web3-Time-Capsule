@@ -1,0 +1,74 @@
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    background-color:cornsilk;
+    padding:10px 30px;;
+    color:white;
+    align-items:right;
+    margin-left:10px;
+    margin-right:10px;
+    border-radius:10px;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    background-color:#eaeaff;
+    background-repeat:no-repeat;
+    position:relative;
+    background-attachment:fixed; /* This  will make img stay on scroll */
+}  
+
+body::before{ /* This will add a transparent layer with background image */
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height:100%;
+    width: 100%;
+    background-color:rgba(0,0,0,0.5); /* This will make the img darker */
+    z-index: -1; /* This will make sure the overlay is behind the content */
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c16620e3-c3ea-4c43-a5e6-cfc3c4955e24/d27r7bd-7d1106b5-2aff-4fcb-b567-ff686c3d2a9a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MxNjYyMGUzLWMzZWEtNGM0My1hNWU2LWNmYzNjNDk1NWUyNFwvZDI3cjdiZC03ZDExMDZiNS0yYWZmLTRmY2ItYjU2Ny1mZjY4NmMzZDJhOWEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ypVxzW_jdOIV2fLv5CIG3Epl_IQGrRgaZlkIxYpOvPw");
+    filter: brightness(0.8);
+    background-position:center;
+    background-size:cover;
+    opacity: 0.9;
+}
+
+#connectwallet{
+    color:grey;
+    padding:10px 18px;
+    border:none;
+    border-radius:5px;
+}
+
+.hero-section{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:80vh;
+    text-align:center;
+}
+
+.h1-headings{
+    text-align:center;
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+.overlayed-content{
+    position:relative;
+    z-index: 1;
+    padding: 2rem;
+    color: #222;
+}
