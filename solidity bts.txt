@@ -1,0 +1,36 @@
+this file contains the explaination and some concepts which are newly used in solidity
+
+a structure capsule created to act as a blueprint of the capsule that you will createCapsule
+a  variable of int type created to allot a new ID to the newly created capsules
+a mapping created for storing the capsules in a mapping structure with uint and struct capsule
+another mapping created to store the address with the capsule ID he/she created
+events are never defined within a function they are just emitted within a function
+events are important to help connect the UI when you see a particular function being executed
+event deine kiya h toh emit bhi toh karna hoga aur emit kisis bhi function ke andar jab karoge toh return statement ke baad hi karna cox return se wo function ke bahar ajata h control oth undetetced code dikhayega
+function ke parameter mai keval wahi likho jo change hoga ya edit hoga in the execution of the function
+
+function create capsule- this requires the current block timestamp to be greater than the unlock time pre assigned
+isme hamne ek naya capsule create kiya h aur usko mapping mai store kara h
+aur user capsule naam ke mapping structure mai us msg.sender ne jo create ki h id usko store kar liya h
+aur phir capsulecounter ko increment kara diya h
+
+function unlockcapsule- this requires the reciever to be the valid one, time stamo to be greater than the one defined as the unlock time and the islocked bool to be false
+isme tumne use kara h storage matlab blockchain pe directly store kardo
+
+function view message returns a string type msg 
+the reuirements are same as unlock capsule thing then do return current.msg
+current h kya? current ka tsorgae used h taake jo bhi change karo woh copy mai na hokar directly blockchain oe store hota rahe 
+maan le agai tune islocked==flase kara with memory as current toh keval ram ki ek copy mai change hoga just for the function to execute na ki directly created blockchain oe change hoga for that to happen you need to put it as storage
+
+function viewipfshash  bhi upar wale ki tarah hi same kaam karta h
+
+abhi tak kuch aisa nhi create hua h jisse user apni marzi se capsules ko access kar skae
+capsuleID ya current bhi keval abhi recently added capsule ko hi point kar rhe h toh created the following two function to allow the user to access whichever the capsules he wants and view their details
+
+function getcapsule- saare woh ids of capdule return kardo jo ek particular msg.sender ne banaye h uint ke array ke form m
+phir rk string type ka mapping banao jiski length utni hi ho jitne ids h tumhare us sender ke 
+phir loop har ek title ko fetch kaega aur usko ek array m print kara dega
+
+function viewcapsule- jo bhi capsule ids h unka data dekhne aur read karne ke liye ek function h, tum ek particular id ko access karke dekh bhi sakte ho
+
+

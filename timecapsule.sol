@@ -11,17 +11,18 @@ contract TimeCapsule
         bool isLocked;
         string message;
         string ipfsHash;
+        string title;
     }
 
-    uint capsuleCounter; //capsule kitne bane ye dekhega and then unhe ek id dega
+    uint capsuleCounter; 
 
     mapping(uint => Capsule) public capsules;
 
-    mapping (address => uint[]) public userCapsule; //jisne capsule banaya uske address ke saath uska capsuleID bhi save karlo
+    mapping (address => uint[]) public userCapsule; 
 
     event capsuleCreated (uint capsuleID, address creator, address receiver);
 
-    function createCapsule(address _receiver,string memory _ipfsHash, uint _unlockTime) public{
+    function createCapsule(address _receiver,string memory _ipfsHash, uint _unlockTime, string memory _title) public{
         require(_unlockTime > block.timestamp, "Can Only Be Unlock In The Future");
         Capsule memory newCapsule=Capsule({
             creator:msg.sender,
@@ -29,6 +30,7 @@ contract TimeCapsule
             ipfsHash:_ipfsHash,
             unlockTime:_unlockTime,
             isLocked: true,
+            title:_title,
             message:""
         });
 
@@ -60,7 +62,7 @@ contract TimeCapsule
     event messageViewed(uint _capsuleID);
 
     function viewMessage(uint _capsuleID) public view returns(string memory){
-        Capsule memory current = capsules[_capsuleID];
+        Capsule storage current = capsules[_capsuleID];
         require(block.timestamp >= current.unlockTime, "Cannot Be Viewed Before Time");
         require(msg.sender==current.receiver, "Not The Intended Receiver");
         require(current.isLocked==false, "Capsule Is Still Locked");
@@ -68,12 +70,36 @@ contract TimeCapsule
     }
 
     function viewIpfsHash(uint _capsuleID) public view returns(string memory){
-        Capsule memory current = capsules[_capsuleID];
+        Capsule storage current = capsules[_capsuleID];
         require(block.timestamp >= current.unlockTime, "Cannot Be Viewed Before Time");
         require(msg.sender==current.receiver, "Not The Intended Receiver");
         require(current.isLocked==false, "Capsule Is Still Locked");
         return current.ipfsHash;
     }
-    
 
+    function getCapsule() public view returns (uint[] memory){
+        return userCapsule[msg.sender];
+    }
+    
+    function viewCapsule (uint _capsuleID) public view returns(
+    uint unlockTime,
+    address creator,
+    address receiver,
+    bool isLocked,
+    string memory message,
+    string memory ipfsHash){
+        capsule storage current = capsules[_capsuleID];
+        require(
+        msg.sender == current.creator || msg.sender == current.receiver,
+        "You are not authorized to view this capsule"
+    );
+    return (
+        current.unlockTime,
+        current.creator,
+        current.receiver,
+        current.isLocked,
+        current.message,
+        current.ipfsHash
+    );
+    }
 }
