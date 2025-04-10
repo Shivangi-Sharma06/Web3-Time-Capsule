@@ -103,3 +103,13 @@ contract TimeCapsule
     );
     }
 }
+
+
+
+
+//features to add
+//  1.encrypt message
+//  2.delt the capsule after unlovk 
+//  3.ipfs addition and upgradation agar possible
+//  4.unlock time update karna mesg udate karna 
+ 
